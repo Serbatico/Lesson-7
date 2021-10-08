@@ -62,13 +62,25 @@ class RadioTest {
         assertEquals(expected, actual);
     }
     @Test
-    void  setNewStation () {
+    void  setStation () {
 
         Radio station = new Radio();
-        int setNewStation = station.setNewStation();
-        setNewStation = 9;
+        int setStation = station.setNewStation();
+        station.setNewStation = 5;
+        int actual = station.setNewStation();
+        int expected = 5;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void  setStationOverLimit () {
+
+        Radio station = new Radio();
+        int setStation = station.setNewStation();
+        station.setNewStation = 10;
         int actual = station.setNewStation();
         int expected = 9;
         assertEquals(expected, actual);
     }
+
+
 }

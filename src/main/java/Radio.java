@@ -4,7 +4,6 @@ public class Radio {
     int maxStation = 9;
     int minStation = 0;
     int setNewStation = 0;
-    int currentVolume = 0;
 
 
     public int  setNextStation() {
@@ -24,16 +23,10 @@ public class Radio {
     }
 
     public int setNewStation(){
-        int station = setCurrentStation + setNewStation;
-        if (station > maxStation){
-            station = maxStation;
-        } if (station < minStation){
-            station = minStation;
-        }
-        return station;
-
-
+    int newStation = setNewStation;
+        if (newStation > maxStation){
+        newStation = maxStation;
     }
-
-
+        return newStation;
+    }
 }
