@@ -25,7 +25,6 @@ class RadioTest {
     @Test
     void setNextStationOver() {
         Radio next = new Radio();
-        int setCurrentStation = next.setCurrentStation;
         next.setCurrentStation = 9;
         int actual = next.setNextStation();
         int expected = 0;
@@ -58,7 +57,6 @@ class RadioTest {
     void setPrevStationOver() {
 
         Radio prev = new Radio();
-        int setCurrentStation = prev.setCurrentStation;
         prev.setCurrentStation = 0;
         int actual = prev.setPrevStation();
         int expected = 9;
@@ -70,7 +68,6 @@ class RadioTest {
     void setStation() {
 
         Radio station = new Radio();
-        int setStation = station.setNewStation();
 
         // Указываем нужный номер радиостанции
         station.setNewStation = 5;
@@ -83,7 +80,6 @@ class RadioTest {
     void setStationOverLimit() {
 
         Radio station = new Radio();
-        int setStation = station.setNewStation();
 
         // Указываем нужный номер радиостанции превышающей высшую границу
         station.setNewStation = 10;
@@ -105,7 +101,6 @@ class RadioTest {
 
         Radio volume = new Radio();
 
-        int currentVolume = volume.currentVolume;
         volume.currentVolume = volume.maxVolume;
         int actual = volume.currentVolume;
         int expected = 10;
@@ -117,7 +112,6 @@ class RadioTest {
 
         Radio volume = new Radio();
 
-        int currentVolume = volume.currentVolume;
         volume.currentVolume = volume.minVolume;
         int actual = volume.currentVolume;
         int expected = 0;
