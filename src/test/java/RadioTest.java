@@ -6,23 +6,25 @@ class RadioTest {
 
     @Test
     void setNextStation() {
-        Radio next  = new Radio();
+        Radio next = new Radio();
         int actual = next.setNextStation();
         int expected = 1;
 
         assertEquals(expected, actual);
     }
+
     @Test
     void setNextStationMiddle() {
-        Radio next  = new Radio();
+        Radio next = new Radio();
         int actual = 4 + next.setNextStation();
         int expected = 5;
 
         assertEquals(expected, actual);
     }
+
     @Test
     void setNextStationOver() {
-        Radio next  = new Radio();
+        Radio next = new Radio();
         int setCurrentStation = next.setCurrentStation;
         next.setCurrentStation = 9;
         int actual = next.setNextStation();
@@ -41,6 +43,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void setPrevStationMiddle() {
 
@@ -50,6 +53,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void setPrevStationOver() {
 
@@ -61,26 +65,63 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
-    void  setStation () {
+    void setStation() {
 
         Radio station = new Radio();
         int setStation = station.setNewStation();
+
+        // Указываем нужный номер радиостанции
         station.setNewStation = 5;
         int actual = station.setNewStation();
         int expected = 5;
         assertEquals(expected, actual);
     }
+
     @Test
-    void  setStationOverLimit () {
+    void setStationOverLimit() {
 
         Radio station = new Radio();
         int setStation = station.setNewStation();
+
+        // Указываем нужный номер радиостанции превышающей высшую границу
         station.setNewStation = 10;
         int actual = station.setNewStation();
         int expected = 9;
         assertEquals(expected, actual);
     }
 
+    @Test
+    void increaseVolume() {
 
+        Radio volume = new Radio();
+        int actual = volume.increaseVolume();
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void increaseVolumeMax() {
+
+        Radio volume = new Radio();
+
+        int currentVolume = volume.currentVolume;
+        volume.currentVolume = volume.maxVolume;
+        int actual = volume.currentVolume;
+        int expected = 10;
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    void decreaseVolumeMin() {
+
+        Radio volume = new Radio();
+
+        int currentVolume = volume.currentVolume;
+        volume.currentVolume = volume.minVolume;
+        int actual = volume.currentVolume;
+        int expected = 0;
+
+        assertEquals(expected, actual);
+    }
 }
