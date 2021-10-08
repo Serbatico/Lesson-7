@@ -41,11 +41,11 @@ public class Radio {
         }
         return currentVolume;
     }
-    public int decreaseVolume (){
+
+    public int decreaseVolume() {
         if (currentVolume < minVolume) {
             currentVolume = minVolume;
         }
         return currentVolume;
     }
-
 }
