@@ -4,7 +4,7 @@ public class Radio {
     int maxStation = 9; //Максимальное кол-во станций
     int minStation = 0;//Минимальное кол-во станций
     int setNewStation = 0; //№ Выбранной станции
-    int currentVolume = 0;//Выбранный уровень громкости на данный момент
+    int setCurrentVolume = 0;//Выбранный уровень громкости на данный момент
     int maxVolume = 10;//Максимальный уровень звука
     int minVolume = 0;//Минимальный уровень звука
 
@@ -36,16 +36,16 @@ public class Radio {
     }
 
     public int increaseVolume() {
-        if (currentVolume < maxVolume) {
-            currentVolume = currentVolume + 1;
+        if (setCurrentVolume < maxVolume) {
+            setCurrentVolume = setCurrentVolume + 1;
         }
-        return currentVolume;
+        return setCurrentVolume;
     }
 
-    public int decreaseVolume() {
-        if (currentVolume < minVolume) {
-            currentVolume = minVolume;
+    public int increaseVolumeMax(){
+        if (setCurrentVolume < maxVolume){
+            setCurrentVolume = maxVolume;
         }
-        return currentVolume;
+        return setCurrentVolume;
     }
 }
