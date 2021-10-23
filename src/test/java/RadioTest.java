@@ -7,8 +7,9 @@ class RadioTest {
     @Test
     void setNextStation() {
         Radio next = new Radio();
+        next.currentStation = 6;
         int actual = next.setNextStation();
-        int expected = 1;
+        int expected = 7;
         assertEquals(expected, actual);
     }
 
@@ -23,7 +24,7 @@ class RadioTest {
     @Test
     void setNextStationOver() {
         Radio next = new Radio();
-        next.setCurrentStation = 9;
+        next.currentStation = 9;
         int actual = next.setNextStation();
         int expected = 0;
         assertEquals(expected, actual);
@@ -43,7 +44,7 @@ class RadioTest {
     void setPrevStationFromCurrent() {
 
         Radio prev = new Radio();
-        prev.setCurrentStation = 9;
+        prev.currentStation = 9;
         int actual = prev.setPrevStation();
         int expected = 8;
         assertEquals(expected, actual);
@@ -63,7 +64,7 @@ class RadioTest {
     void setPrevStationOver() {
 
         Radio prev = new Radio();
-        prev.setCurrentStation = 0;
+        prev.currentStation = 0;
         int actual = prev.setPrevStation();
         int expected = 9;
         assertEquals(expected, actual);
@@ -73,9 +74,8 @@ class RadioTest {
     void setStation() {
 
         Radio station = new Radio();
-
         // Указываем нужный номер радиостанции
-        station.setNewStation = 5;
+        station.currentStation = 5;
         int actual = station.setNewStation();
         int expected = 5;
         assertEquals(expected, actual);
@@ -87,7 +87,7 @@ class RadioTest {
         Radio station = new Radio();
 
         // Указываем нужный номер радиостанции превышающей высшую границу
-        station.setNewStation = 10;
+        station.currentStation = 10;
         int actual = station.setNewStation();
         int expected = 9;
         assertEquals(expected, actual);
@@ -107,7 +107,7 @@ class RadioTest {
     void increaseVolumeOver() {
 
         Radio increaseVolume = new Radio();
-        increaseVolume.setCurrentVolume = 10;
+        increaseVolume.currentVolume = 10;
         int actual = increaseVolume.increaseVolume();
         int expected = 10;
         assertEquals(expected, actual);
@@ -127,19 +127,28 @@ class RadioTest {
     void increaseVolumeToMaxFromCurrent() {
 
         Radio increaseVolumeToMax = new Radio();
-        increaseVolumeToMax.setCurrentVolume = 10;
+        increaseVolumeToMax.currentVolume = 10;
         int actual = increaseVolumeToMax.increaseVolumeMax();
         int expected = 10;
         assertEquals(expected, actual);
     }
 
     @Test
-    void decreaseVolumeMin() {
+    void decreaseVolumeToMin() {
 
-        Radio volume = new Radio();
+        Radio decreaseVolumeToMin = new Radio();
+        decreaseVolumeToMin.currentVolume = 2;
+        int actual = decreaseVolumeToMin.decreaseVolumeMin();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
 
-        volume.setCurrentVolume = volume.minVolume;
-        int actual = volume.setCurrentVolume;
+    @Test
+    void decreaseVolumeToMinFromCurrent() {
+
+        Radio decreaseVolumeToMin = new Radio();
+        decreaseVolumeToMin.currentVolume = 0;
+        int actual = decreaseVolumeToMin.decreaseVolumeMin();
         int expected = 0;
         assertEquals(expected, actual);
     }

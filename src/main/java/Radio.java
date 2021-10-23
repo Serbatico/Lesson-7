@@ -1,17 +1,24 @@
 
 public class Radio {
-    int setCurrentStation = 0; //№ станции на данный момент
-    int maxStation = 9; //Максимальное кол-во станций
-    int minStation = 0;//Минимальное кол-во станций
-    int setNewStation = 0; //№ Выбранной станции
-    int setCurrentVolume = 0;//Выбранный уровень громкости на данный момент
-    int maxVolume = 10;//Максимальный уровень звука
-    int minVolume = 0;//Минимальный уровень звука
+    public int currentStation;
+    public int currentVolume;//Выбранный уровень громкости на данный момент
+    private int getMaxStation(){
+        return 9; //Максимальное кол-во станций
+    }
+    private int getMinStation(){
+        return 0; //Минимальное кол-во станций
+    }
+    private int getMaxVolume(){
+        return 10; //Максимальный уровень звука
+    }
+    private int getMinVolume(){
+        return 0; //Минимальный уровень звука
+    }
 
     //Следующая станция
     public int setNextStation() {
-        int next = setCurrentStation + 1;
-        if (next > maxStation) {
+        int next = currentStation + 1;
+        if (next > getMaxStation()) {
             next = 0;
         }
         return next;
@@ -19,8 +26,8 @@ public class Radio {
 
     //Предыдущая станция
     public int setPrevStation() {
-        int prev = setCurrentStation - 1;
-        if (prev < minStation) {
+        int prev = currentStation - 1;
+        if (prev < getMinStation()) {
             prev = 9;
         }
         return prev;
@@ -28,24 +35,32 @@ public class Radio {
 
     //Выбрать станцию по №
     public int setNewStation() {
-        int newStation = setNewStation;
-        if (newStation > maxStation) {
-            newStation = maxStation;
+        int newStation = currentStation;
+        if (newStation > getMaxStation()) {
+            newStation = getMaxStation();
         }
         return newStation;
     }
 
     public int increaseVolume() {
-        if (setCurrentVolume < maxVolume) {
-            setCurrentVolume = setCurrentVolume + 1;
+        if (currentVolume < getMaxVolume()) {
+            currentVolume = currentVolume + 1;
         }
-        return setCurrentVolume;
+        return currentVolume;
     }
 
     public int increaseVolumeMax(){
-        if (setCurrentVolume < maxVolume){
-            setCurrentVolume = maxVolume;
+        if (currentVolume < getMaxVolume()){
+            currentVolume = getMaxVolume();
         }
-        return setCurrentVolume;
+        return currentVolume;
     }
+
+    public int decreaseVolumeMin(){
+        if (currentVolume > getMinVolume()){
+            currentVolume = getMinVolume();
+        }
+        return currentVolume;
+    }
+
 }
